@@ -4,27 +4,12 @@ runningheader: "Análisis factorial por componentes principales en R" # solo par
 subtitle: "Análisis factorial PCA" # solo para salida html
 author: "Josue Huaman"
 date: "`r Sys.Date()`"
-output:
-  tufte::tufte_html: default
-  tufte::tufte_handout:
-    citation_package: natbib
-    latex_engine: xelatex
-  tufte::tufte_book:
-    citation_package: natbib
-    latex_engine: xelatex
-bibliography: skeleton.bib
-link-citations: yes
 ---
 
-```{r setup, include=FALSE}
-library(tufte)
-# invalidar caché cuando cambia la versión de tuft
-knitr::opts_chunk$set(cache.extra = packageVersion('tufte'))
-options(htmltools.dir.version = FALSE)
-```
-
 ::: {.fullwidth}
-# Instalación y carga de librerias
+
+## Instalación y carga de librerias
+
 
 ```{r}
 # pacotes <- c("plotly", #plataforma gráfica
@@ -72,7 +57,9 @@ library(tidyverse)
 :::
 ::: {.fullwidth}
 
-## Carga de base de datos
+
+
+Carga de base de datos
 
 ```{r}
 NotasFatorial <- read_excel("notas_fatorial.xlsx")
@@ -82,6 +69,7 @@ NotasFatorial <- read_excel("notas_fatorial.xlsx")
 ::: {.fullwidth}
 
 
+
 Visualización de base de datos
 
 ```{r}
@@ -89,7 +77,7 @@ NotasFatorial[1:6, 1:5] %>%
   kable() %>%
   kable_styling(bootstrap_options = "striped", 
                 full_width = FALSE,
-                font_size = 17)
+                font_size = 14)
 ```
 
 :::
@@ -103,6 +91,8 @@ Estatísticas descritivas
 summary(NotasFatorial)
 
 ```
+
+
 
 Dispersión y ajuste lineal entre las variables 'custos' y 'finanças'
 
@@ -150,6 +140,7 @@ NotasFatorial %>%
 
 :::
 ::: {.fullwidth}
+
 
 
 Dispersión y ajuste lineal entre variables 'custos' y 'atuária'
@@ -228,7 +219,7 @@ chart.Correlation(NotasFatorial[, 2:5], histogram = TRUE, pch = "+")
 
 
 
-# Elaboración de Análisis Factorial por Componentes Principales
+## Elaboración de Análisis Factorial por Componentes Principales
 
 Prueba de esfericidad de Bartlett
 
@@ -313,7 +304,7 @@ round(variancia_compartilhada, 3) %>%
   kable() %>%
   kable_styling(bootstrap_options = "striped", 
                 full_width = FALSE, 
-                font_size = 17)
+                font_size = 14)
 
 ```
 
@@ -339,7 +330,7 @@ round(scores_fatoriais, 3) %>%
   kable() %>%
   kable_styling(bootstrap_options = "striped", 
                 full_width = FALSE, 
-                font_size = 17)
+                font_size = 14)
 ```
 
 
@@ -390,7 +381,7 @@ round(cargas_fatoriais, 3) %>%
   kable() %>%
   kable_styling(bootstrap_options = "striped", 
                 full_width = FALSE, 
-                font_size = 17)
+                font_size = 14)
 ```
 
 :::
@@ -419,7 +410,7 @@ round(comunalidades, 3) %>%
   kable() %>%
   kable_styling(bootstrap_options = "striped",
                 full_width = FALSE,
-                font_size = 17)
+                font_size = 14)
 ```
 
 :::
@@ -427,7 +418,7 @@ round(comunalidades, 3) %>%
 
 
 
-# Elaboración del análisis factorial por componentes principales
+## Elaboración del análisis factorial por componentes principales
 
 Factores extraídos de valores propios mayores que 1
 
@@ -480,7 +471,7 @@ round(comunalidades2, 3) %>%
   kable() %>%
   kable_styling(bootstrap_options = "striped",
                 full_width = FALSE,
-                font_size = 17)
+                font_size = 14)
 ```
 
 
@@ -544,7 +535,7 @@ NotasFatorial[1:6, 1:8] %>%
   kable() %>%
   kable_styling(bootstrap_options = "striped",
                 full_width = FALSE,
-                font_size = 17)
+                font_size = 14)
 ```
 
 :::
